@@ -1,13 +1,7 @@
-// petSlice.ts
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { Pet } from '../types/Pet';
 
-interface Pet {
-  id: string;
-  name: string;
-  // Add other fields as needed
-}
 
-// Define the initial state for pets
 interface PetState {
   pets: Pet[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
@@ -20,7 +14,7 @@ const initialState: PetState = {
   error: null,
 };
 
-// Define the async thunk for fetching all pets
+
 export const getAllPets = createAsyncThunk('pets/getAllPets', async () => {
   const response = await fetch('https://634e71874af5fdff3a5c61ba.mockapi.io/api/v1/pets');
   const data = await response.json();

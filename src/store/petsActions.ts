@@ -1,24 +1,16 @@
 import { useDispatch } from "react-redux";
+import { Pet } from "../types/Pet";
 
 interface SetPetsAction {
   type: "SET_PETS";
   payload: any[];
 }
 
-interface SetFilterAction {
-  type: "SET_FILTER";
-  payload: string;
-}
-
-export const setPets = (pets: any[]): SetPetsAction => ({
+export const setPets = (pets: Pet[]): SetPetsAction => ({
   type: "SET_PETS",
   payload: pets,
 });
 
-export const setFilter = (filter: string): SetFilterAction => ({
-  type: "SET_FILTER",
-  payload: filter,
-});
 
 export const getAllPets = () => async () => {
   const dispatch = useDispatch();

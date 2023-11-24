@@ -16,8 +16,6 @@ function App() {
   const status = useSelector((state: any) => state.pets.status);
   const error = useSelector((state: any) => state.pets.error);
 
-  console.log("pets", pets)
-
   useEffect(() => {
     dispatch(getAllPets() as any);
   }, [dispatch]);
