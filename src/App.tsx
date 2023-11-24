@@ -10,9 +10,8 @@ import { Pet } from "./types/Pet";
 import { Species } from "./types/Species";
 
 function App() {
-
   const pet: Pet = { id: "1", species: Species.DOG, available: true };
-  
+
   return (
     <div id="app">
       <Navbar />

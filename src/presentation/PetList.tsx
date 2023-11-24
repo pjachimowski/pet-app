@@ -9,14 +9,18 @@ function PetList() {
   // const { petData, filter, setFilter } = usePetData();
 
   // const filteredPets = petData.filter((pet: Pet) => {
-    // pet search logic
-    // console.log("pet", pet);
+  // pet search logic
+  // console.log("pet", pet);
   // });
- const filteredPetsMock = [{ id: "1", species: Species.DOG, available: true }, { id: "2", species: Species.DOG, available: true }, { id: "3", species: Species.DOG, available: true }]
+  const filteredPetsMock = [
+    { id: "1", species: Species.DOG, available: true },
+    { id: "2", species: Species.DOG, available: true },
+    { id: "3", species: Species.DOG, available: true },
+  ];
 
   return (
-    <div>
-      <PetFilter filter={''} setFilter={()=>{}} />
+    <div className="standardContainer">
+      <PetFilter filter={""} setFilter={() => {}} />
       <div>
         {filteredPetsMock.map((pet: Pet) => (
           <PetCard key={pet.id} pet={pet} />
