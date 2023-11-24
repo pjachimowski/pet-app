@@ -4,7 +4,7 @@ import Title from "./Title";
 
 function PetDirectory() {
   return (
-    <div className="directoryContainer standardMarginTop">
+    <div className="directoryContainer bigMarginTop">
       <div className="directoryLeftContainer">
         <img
           className="directoryLeft"

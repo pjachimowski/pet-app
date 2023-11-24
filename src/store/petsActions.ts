@@ -20,12 +20,13 @@ export const setFilter = (filter: string): SetFilterAction => ({
   payload: filter,
 });
 
-export const fetchPets = () => async () => {
+export const getAllPets = () => async () => {
   const dispatch = useDispatch();
   try {
-    const response = await fetch("https://api.example.com/pets"); // replace with your API endpoint
+    const response = await fetch("https://634e71874af5fdff3a5c61ba.mockapi.io/api/v1/pets"); 
     const pets = await response.json();
     dispatch(setPets(pets));
+    return;
   } catch (error) {
     console.error("Error fetching pets:", error);
   }

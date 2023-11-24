@@ -1,16 +1,18 @@
-import {
-  legacy_createStore as createStore,
-  applyMiddleware,
-  combineReducers,
-} from "redux";
-import thunk from "redux-thunk";
-import petsReducer from "./petsReducer";
 
-const rootReducer = combineReducers({
-  pets: petsReducer,
-  // Add other reducers if needed
+import { configureStore } from '@reduxjs/toolkit';
+import petReducer from './petSlice';
+
+interface RootState {
+  pets: {
+    data: any[];
+    filter: string;
+  };
+}
+
+const store = configureStore({
+  reducer: {
+    pets: petReducer,
+  },
 });
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;
