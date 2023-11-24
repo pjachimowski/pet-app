@@ -82,13 +82,16 @@ body {
 
 /* search */
 .searchInput {
+  border: none;
+  outline: none;
+  margin-left: 10px;
+}
+
+.searchInputContainer {
+  width: 50%;
   border-radius: var(--lg);
   border: var(--light-grey) 2px solid;
   padding: var(--md)
-}
-
-.searchIcon {
-  fill: var(--light-blue);
 }
 
 .standardSelect {

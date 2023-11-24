@@ -17,14 +17,15 @@ function PetFilter(props: Props) {
 
   return (
     <div>
-      <div className="standardMarginTop searchInput">
-        <img className="searchIcon" src={"/icons/search.svg"} alt="Logo" />
+      <div className="standardMarginTop searchInputContainer">
+        <img  src={"/icons/search.svg"} alt="search" />
         <input
+        className="searchInput"
           type="text"
           id="petSearch"
           value={value}
           onChange={handleInputChange}
-          placeholder={"Type to search..."}
+          placeholder={"Search for pets"}
         />
       </div>
       <div className="standardMarginTop">
