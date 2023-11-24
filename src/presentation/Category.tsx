@@ -12,7 +12,7 @@ function Category(props: Readonly<Props>) {
   const { title, icon } = props;
 
   return (
-    <div >
+    <div className="bigMarginTop">
       <div className="categoryBackground">
         <img className="categoryIcon" src={icon} alt="Logo" />
       </div>

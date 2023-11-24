@@ -140,6 +140,7 @@ body {
   object-fit: cover;
 }
 
+
 /* Directory */
 .directoryContainer {
   display: flex;
@@ -183,6 +184,47 @@ body {
   position: relative;
   top: -15px; 
   fill: #285DAB;
+}
+
+@media screen and (max-width: 600px) {
+  #app-content {
+    padding: 2vw 5vw;
+  }
+
+  .navbar {
+    background-color: var(--white);
+  }
+
+  .searchInputContainer {
+      width: auto;
+      border-radius: var(--lg);
+      border: none;
+      background-color: var(--grey);
+  }
+
+  .searchInput {
+    background-color: var(--grey);
+  }
+
+  .petCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .petButton::before {
+    width: 40px;
+    height: 40px;
+    background: path('/icons/arrow-right.svg') center/contain no-repeat;
+  }
+
+  .petImageContainer {
+    width: 250px;
+    height: 180px;
+    border-radius: var(--lg);
+    overflow: hidden;
+  }
+  
 }
 
 
