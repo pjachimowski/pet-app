@@ -15,12 +15,12 @@ function PetCard(props: Readonly<Props>) {
       <div className="petImageContainer">
         <img className="petImage" src={pet.photoUrl} alt="Logo" />
       </div>
-      <Title text={pet.name!} />
+      <Title style={"title"} text={pet.name!} />
       <Button
         title="View"
-        className='petButton'
+        className="petButton standardMarginTop"
         onClick={() => console.log("CLICK!")}
-      /> 
+      />
     </div>
   );
 }

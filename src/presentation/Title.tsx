@@ -3,11 +3,12 @@ import "../App.css";
 
 interface Props {
   text: string;
+  style?: string;
 }
 
 function Title(props: Props) {
-  const { text } = props;
-  return <div className="title standardMarginTop">{text}</div>;
+  const { text, style } = props;
+  return <div className={style + " standardMarginTop"}>{text}</div>;
 }
 
 export default Title;

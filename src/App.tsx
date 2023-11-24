@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
 import Footer from "./presentation/Footer";
-import Header from "./presentation/Header";
 import Navbar from "./presentation/Navbar";
 import PetCategories from "./presentation/PetCategories";
 import PetDirectory from "./presentation/PetDirectory";
 import PetList from "./presentation/PetList";
+import Title from "./presentation/Title";
 import { Pet } from "./types/Pet";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
     <div id="app">
       <Navbar />
       <div id="app-content">
-        <Header text={"Pets"} />
+        <Title style={'header'} text={"Pets"} />
         <PetList />
         <PetDirectory pet={pet} />
         <PetCategories />

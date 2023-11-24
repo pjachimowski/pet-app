@@ -101,10 +101,25 @@ body {
   width: 30%
 }
 
+.directoryButton{
+  border-radius: var(--lg);
+  background-color: var(--light-grey);
+  padding: var(--sm);
+  border: none;
+  width: 70%
+}
+
+/* Pet List */
+.petCardsList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 /* Pet */
 .petImageContainer {
-  width: 345px;
-  height: 345px;
+  width: 320px;
+  height: 250px;
   border-radius: var(--lg);
   overflow: hidden;
 }
@@ -112,6 +127,35 @@ body {
   width: 100%; 
   height: 100%; 
   object-fit: cover;
+}
+
+/* Directory */
+.directoryContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.directoryLeftContainer {
+  width: 70%; 
+  max-height: 40vh;
+  border-radius: var(--lg) 0px 0px var(--lg);
+  overflow: hidden;
+}
+.directoryLeft{
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover;
+}
+.directoryRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto; 
+  max-height: 40vh;
+  background-color: var(--light-blue);
+  color: var(--light-grey);
+  border-radius: 0px var(--lg) var(--lg) 0px;
+  padding: var(--lg);
 }
 
 

@@ -4,6 +4,7 @@ import { Pet } from "../types/Pet";
 import PetCard from "./PetCard";
 import PetFilter from "./PetFilter";
 import SubHeader from "./SubHeader";
+import Title from "./Title";
 
 function PetList() {
   // const { petData, filter, setFilter } = usePetData();
@@ -45,8 +46,8 @@ function PetList() {
   return (
     <div className="standardMarginTop">
       <PetFilter filter={""} setFilter={() => {}} />
-      <div>
-        <SubHeader text={"Results"} />
+      <Title style={"subheader"} text={"Results"} />
+      <div className="petCardsList">
         {filteredPetsMock.map((pet: Pet) => (
           <PetCard key={pet.id} pet={pet} />
         ))}
