@@ -1,11 +1,9 @@
-import { Species } from "./Species";
-
 export interface Pet {
-  id: string;
+  id: number;
   name?: string;
-  species: Species;
+  species: string;
   available: boolean;
-  birthYear?: string;
-  dateAdded?: Date;
+  birthYear?: number;
+  dateAdded?: string;
   photoUrl?: string;
 }

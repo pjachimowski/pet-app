@@ -1,8 +1,13 @@
 import React from "react";
 import "../App.css";
 
-function Header() {
-  return <div className="header standardContainer">Pets</div>;
+interface Props {
+  text: string;
+}
+
+function Header(props: Props) {
+  const { text } = props;
+  return <div className="header standardMarginTop">{text}</div>;
 }
 
 export default Header;

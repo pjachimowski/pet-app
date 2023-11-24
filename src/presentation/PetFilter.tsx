@@ -17,7 +17,7 @@ function PetFilter(props: Props) {
 
   return (
     <div>
-      <div className="standardContainer searchInput">
+      <div className="standardMarginTop searchInput">
         <img className="searchIcon" src={"/icons/search.svg"} alt="Logo" />
         <input
           type="text"
@@ -28,7 +28,7 @@ function PetFilter(props: Props) {
           placeholder={"Type to search..."}
         />
       </div>
-      <div className="standardContainer">
+      <div className="standardMarginTop">
         <SelectComponent options={["cat", "dog"]} />
         <SelectComponent options={["cat", "dog"]} />
         <SelectComponent options={["cat", "dog"]} />

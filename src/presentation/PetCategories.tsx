@@ -3,7 +3,7 @@ import "../App.css";
 
 function PetCategories() {
   return (
-    <div className="standardContainer">
+    <div className="standardMarginTop">
       CATEGORIES | CATEGORIES | CATEGORIES | CATEGORIES{" "}
     </div>
   );

@@ -7,16 +7,23 @@ import PetCategories from "./presentation/PetCategories";
 import PetDirectory from "./presentation/PetDirectory";
 import PetList from "./presentation/PetList";
 import { Pet } from "./types/Pet";
-import { Species } from "./types/Species";
 
 function App() {
-  const pet: Pet = { id: "1", species: Species.DOG, available: true };
+  const pet: Pet = {
+    id: 1,
+    name: "Daamin",
+    species: "Cat",
+    available: false,
+    birthYear: 2012,
+    dateAdded: "19-06-2021",
+    photoUrl: "https://i.imgur.com/wpfirW7l.jpg",
+  };
 
   return (
     <div id="app">
       <Navbar />
       <div id="app-content">
-        <Header />
+        <Header text={"Pets"} />
         <PetList />
         <PetDirectory pet={pet} />
         <PetCategories />
