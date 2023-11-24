@@ -3,16 +3,16 @@ import { Species } from "../types/Species";
 import SelectComponent from "./SelectComponent";
 
 interface Props {
-  filter: string;
-  setFilter: (value: string) => void;
+  value: string;
+  handleSearch: (value: string) => void;
 }
 
 function PetFilter(props: Props) {
-  const { filter, setFilter } = props;
+  const { value, handleSearch } = props;
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const value = event.target.value;
-    setFilter(value);
+    const term = event.target.value;
+    handleSearch(term);
   };
 
   return (
@@ -22,8 +22,7 @@ function PetFilter(props: Props) {
         <input
           type="text"
           id="petSearch"
-          // className="searchInput"
-          value={filter}
+          value={value}
           onChange={handleInputChange}
           placeholder={"Type to search..."}
         />
