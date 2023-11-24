@@ -1,1 +1,47 @@
-/* App CSS */
+/* Define a spacing scale using CSS variables */
+:root {
+  --xs: 4px;
+  --sm: 8px;
+  --md: 16px;
+  --lg: 24px;
+  --xl: 32px;
+}
+
+
+body {
+  font-family: 'Open Sans', sans-serif;
+    background-color: #FFFFFF;
+    color: #111111;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#app-content {
+  flex: 1;
+  padding: 2vw 15vw;
+}
+
+.navbar {
+    background-color: #F8CF47;
+    width: 100%;
+    padding:  10px 35px;
+}
+
+.logo {
+  width:45px;
+  height: 45px;
+}
+
+.footer {
+  background-color: #285DAB;
+  width: 100%;
+  min-height: 45px
+}
+
+.standardContainer {
+  margin-top: var(--lg);
+}
