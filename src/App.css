@@ -49,12 +49,17 @@ body {
 .footer {
   background-color: var(--light-blue);
   width: 100%;
-  min-height: 45px
+  min-height: 45px;
+  margin-top: 55px;
 }
 
-/* standard */
+/* layout */
 .standardMarginTop {
   margin-top: var(--md);
+}
+
+.bigMarginTop {
+  margin-top: var(--xl);
 }
 
 /* Text */
@@ -109,8 +114,8 @@ body {
   width: 70%
 }
 
-/* Pet List */
-.petCardsList {
+/* List */
+.cardList {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -158,6 +163,21 @@ body {
   padding: var(--lg);
 }
 
+/* Categories */
+.categoryBackground {
+  border-radius: var(--lg);
+  height: 100%; 
+  width: 170px;
+  text-align: center;
+  background-color: var(--light-grey);
+}
+
+.categoryIcon {
+  height: 45px;
+  position: relative;
+  top: -15px; 
+  fill: #285DAB;
+}
 
 
 

@@ -23,9 +23,9 @@ function App() {
     <div id="app">
       <Navbar />
       <div id="app-content">
-        <Title style={'header'} text={"Pets"} />
+        <Title style={"header"} text={"Pets"} />
         <PetList />
-        <PetDirectory pet={pet} />
+        <PetDirectory />
         <PetCategories />
       </div>
       <Footer />

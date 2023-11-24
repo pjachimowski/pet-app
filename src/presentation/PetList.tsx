@@ -1,9 +1,7 @@
 import React from "react";
-import { usePetData } from "../hooks/usePetData";
 import { Pet } from "../types/Pet";
 import PetCard from "./PetCard";
 import PetFilter from "./PetFilter";
-import SubHeader from "./SubHeader";
 import Title from "./Title";
 
 function PetList() {
@@ -44,10 +42,10 @@ function PetList() {
   ];
 
   return (
-    <div className="standardMarginTop">
+    <div className="bigMarginTop">
       <PetFilter filter={""} setFilter={() => {}} />
-      <Title style={"subheader"} text={"Results"} />
-      <div className="petCardsList">
+      <Title style={"subheader bigMarginTop"} text={"Results"} />
+      <div className="cardList">
         {filteredPetsMock.map((pet: Pet) => (
           <PetCard key={pet.id} pet={pet} />
         ))}
