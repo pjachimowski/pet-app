@@ -1,7 +1,7 @@
 import React from "react";
 
 function Footer() {
-  return <div className="footer"></div>;
+  return <footer className="footer" role="footer" aria-label="footer"></footer>;
 }
 
 export default Footer;

@@ -3,19 +3,30 @@ import "../App.css";
 
 interface Props {
   options: string[];
+  placeholder?: string;
+  handleSelect: (value: string) => void;
 }
 
 function SelectComponent(props: Props) {
-  const { options } = props;
+  const { options, placeholder = "", handleSelect } = props;
 
-  const [selectedPet, setSelectedPet] = useState("orange");
-  // ...
+  const [selectedPet, setSelectedPet] = useState("");
+
+  const onChange = (value: string) => {
+    handleSelect(value);
+    setSelectedPet(value);
+  };
+
   return (
     <select
-      className="standardSelect"
+      className="standard-select"
       value={selectedPet}
-      onChange={(e) => setSelectedPet(e.target.value)}
+      onChange={(e) => onChange(e.target.value)}
+      aria-label="Select Pet"
     >
+      <option value="" disabled selected hidden>
+        {placeholder}
+      </option>
       {options.map((opt) => (
         <option key={opt} value={opt}>
           {opt}

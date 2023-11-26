@@ -1,37 +1,50 @@
 import React from "react";
-import { Species } from "../types/Species";
+import Button from "./Button";
 import SelectComponent from "./SelectComponent";
 
 interface Props {
   value: string;
   handleSearch: (value: string) => void;
+  sortByDateAdded: () => void;
 }
 
 function PetFilter(props: Props) {
-  const { value, handleSearch } = props;
+  const { value, handleSearch, sortByDateAdded } = props;
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const term = event.target.value;
+  const handleInputChange = (term: string) => {
     handleSearch(term);
   };
 
   return (
-    <div>
-      <div className="standardMarginTop searchInputContainer">
-        <img  src={"/icons/search.svg"} alt="search" />
+    <div aria-label="Search and Filter Options">
+      <div className="standard-margin-top search-input__container">
+        <img src={"/icons/search.svg"} alt="search" aria-label="Search Icon" />
         <input
-        className="searchInput"
+          className="search-input"
           type="text"
           id="petSearch"
           value={value}
-          onChange={handleInputChange}
+          onChange={(e) => handleInputChange(e.target.value)}
           placeholder={"Search for pets"}
+          aria-label="Search Input"
         />
       </div>
-      <div className="standardMarginTop">
-        <SelectComponent options={["cat", "dog"]} />
-        <SelectComponent options={["cat", "dog"]} />
-        <SelectComponent options={["cat", "dog"]} />
+      <div className="standard-margin-top">
+        <SelectComponent
+          handleSelect={handleInputChange}
+          options={["cat", "dog", "rat"]}
+          aria-label="Select Type "
+          placeholder="Type"
+        />
+        <SelectComponent
+          handleSelect={() => {}}
+          options={["no categories yet"]}
+          aria-label="Select Category"
+          placeholder="Category"
+        />
+        <button className="latest-button" onClick={sortByDateAdded}>
+          <span>Latest added</span>
+        </button>
       </div>
     </div>
   );

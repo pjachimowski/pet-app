@@ -14,14 +14,15 @@
 
     /* Type Checking */
     "strict": true,                                      /* Enable all strict type-checking options. */
-    "types": ["react", "react-native"],
+    "types": ["jest", "node"],
 
   },
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.test.ts",
-    "src/**/*.test.tsx"
+    "src/**/*.test.tsx",
+    "jest.config.ts"  
   ],
   "exclude": [
     "node_modules"

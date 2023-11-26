@@ -1,29 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Pet } from "../types/Pet";
 import Button from "./Button";
+import PetPopup from "./PetPopup";
 import Title from "./Title";
-
 
 interface Props {
   pet: Pet;
 }
 
 function PetCard(props: Readonly<Props>) {
-  const isMobile = window.matchMedia('(max-width: 600px)').matches;
-
   const { pet } = props;
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    setIsPopupOpen(true);
+  };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
   return (
-    <div className="standardMarginTop petCard">
-      <div className="petImageContainer">
-        <img className="petImage" src={pet.photoUrl} alt="Logo" />
+    <div className="standard-margin-top pet-card">
+      <div className="pet-image__container" aria-label="Pet Photo">
+        <img className="pet-image" src={pet.photoUrl} alt="Pet" />
       </div>
-      <Title style={"title"} text={pet.name!} />
+      <Title className={"title standard-margin-top"} text={pet.name!} />
       <Button
-        title={isMobile ? "" : "Visit"}
-        className="petButton standardMarginTop"
-        onClick={() => console.log("CLICK!")}
+        title="View"
+        className="pet-button width-sm standard-margin-top"
+        onClick={handleButtonClick}
       />
+      {isPopupOpen && <PetPopup onClose={handleClosePopup} pet={pet} />}
     </div>
   );
 }

@@ -12,11 +12,11 @@ function Category(props: Readonly<Props>) {
   const { title, icon } = props;
 
   return (
-    <div className="bigMarginTop">
-      <div className="categoryBackground">
-        <img className="categoryIcon" src={icon} alt="Logo" />
+    <div className="big-margin-top">
+      <div className="category__background">
+        <img className="category__icon" src={icon} alt="Logo" />
       </div>
-      <Title style={"title"} text={title} />
+      <Title className={"title"} text={title} />
     </div>
   );
 }

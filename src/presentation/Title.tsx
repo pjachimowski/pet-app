@@ -3,12 +3,16 @@ import "../App.css";
 
 interface Props {
   text: string;
-  style?: string;
+  className?: string;
 }
 
 function Title(props: Props) {
-  const { text, style } = props;
-  return <div className={style + " standardMarginTop"}>{text}</div>;
+  const { text, className } = props;
+  return (
+    <p className={className} aria-label={className}>
+      {text}
+    </p>
+  );
 }
 
 export default Title;

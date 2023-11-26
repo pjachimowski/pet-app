@@ -1,73 +1,98 @@
 import React, { useState } from "react";
 import { Pet } from "../types/Pet";
+import { levenshteinDistance } from "../utils/filterUtils";
+import Button from "./Button";
 import PetCard from "./PetCard";
 import PetFilter from "./PetFilter";
 import Title from "./Title";
 
-interface Props { 
-  pets: Pet[]
+interface Props {
+  pets: Pet[];
 }
 
 function PetList(props: Props) {
- const {pets} = props;
- const [searchTerm, setSearchTerm] = useState('');
- const [searchResults, setSearchResults] = useState(pets);
+  const { pets } = props;
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState(pets);
+  const [displayCount, setDisplayCount] = useState(3);
 
- const levenshteinDistance = (a: any, b: any) => {
-  const dp = Array.from(Array(a.length + 1), () => Array(b.length + 1).fill(0));
+  const sortByDateAdded = () => {
+    const compareByDateAdded = (a: Pet, b: Pet): number => {
+      const dateA = new Date(a.dateAdded!.split("-").reverse().join("-"));
+      const dateB = new Date(b.dateAdded!.split("-").reverse().join("-"));
 
-  for (let i = 0; i <= a.length; i++) {
-    for (let j = 0; j <= b.length; j++) {
-      if (i === 0) {
-        dp[i][j] = j;
-      } else if (j === 0) {
-        dp[i][j] = i;
-      } else {
-        dp[i][j] = Math.min(
-          dp[i - 1][j - 1] + (a[i - 1] !== b[j - 1] ? 1 : 0),
-          dp[i - 1][j] + 1,
-          dp[i][j - 1] + 1
-        );
-      }
+      return dateB.getTime() - dateA.getTime();
+    };
+
+    const sortedPets = pets.slice().sort(compareByDateAdded);
+
+    setSearchResults(sortedPets);
+  };
+
+  const handleSeeMore = () => {
+    setDisplayCount(displayCount + 3);
+  };
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+    if (term.length <= 2) {
+      setSearchResults(pets);
+    } else {
+      const filteredResults = pets.filter((item) => {
+        const itemName = item.name?.toLowerCase();
+        const itemSpecies = item.species?.toLowerCase();
+
+        if (itemName && itemSpecies) {
+          const nameDistance = levenshteinDistance(term, itemName);
+          const nameSimilarity =
+            1 - nameDistance / Math.max(term.length, itemName.length);
+
+          const speciesDistance = levenshteinDistance(term, itemSpecies);
+          const speciesSimilarity =
+            1 - speciesDistance / Math.max(term.length, itemSpecies.length);
+
+          const nameCondition = nameSimilarity > 0.25; // Adjust the threshold as needed
+          const speciesCondition = speciesSimilarity > 0.25; // Adjust the threshold as needed
+
+          return nameCondition || speciesCondition;
+        }
+      });
+
+      setSearchResults(filteredResults);
     }
-  }
-
-  return dp[a.length][b.length];
-}
-
- const handleSearch = (term: any) => {
-  setSearchTerm(term);
-  if(term.length <= 2){
-    return;
-  }
-
-  // Perform strict search
-  // const filteredResults = pets.filter((pet) =>
-  //   pet.name?.toLowerCase().includes(term.toLowerCase())
-  // );
-
-  // Perform the fuzzy search
-  const filteredResults = pets.filter((item) => {
-    const itemName = item.name?.toLowerCase();
-    if(itemName && itemName.length){
-      const distance = levenshteinDistance(term, itemName);
-      const similarity = 1 - distance / Math.max(term.length, itemName.length);
-      return similarity > 0.25; // Adjust the threshold as needed
-    }
-  });
-
-  setSearchResults(filteredResults);
-};
+  };
 
   return (
-    <div className="bigMarginTop">
-      <PetFilter value={searchTerm} handleSearch={handleSearch} />
-      <Title style={"subheader bigMarginTop"} text={"Results"} />
-      <div className="cardList">
-        {searchResults.map((pet: Pet) => (
-          <PetCard key={pet.id} pet={pet} />
+    <div className="big-margin-top" aria-label="Search Results">
+      <PetFilter
+        value={searchTerm}
+        handleSearch={handleSearch}
+        aria-label="Pet Filter"
+        sortByDateAdded={sortByDateAdded}
+      />
+      <Title
+        className={"subheader big-margin-top"}
+        text={"Results"}
+        aria-label="Results Subheader"
+      />
+      <ul className="card-list" aria-label="List of Search Results">
+        {searchResults.slice(0, displayCount).map((pet: Pet) => (
+          <li
+            key={pet.id}
+            aria-label={`Pet ${pet.name} Card`}
+            className="pet-card__container"
+          >
+            <PetCard pet={pet} />
+          </li>
         ))}
-      </div>
+      </ul>
+      <section className="see-more-section">
+        {displayCount < searchResults.length && (
+          <button className="see-more-button width-sm" onClick={handleSeeMore}>
+            <span>See more</span>
+          </button>
+        )}
+      </section>
     </div>
   );
 }

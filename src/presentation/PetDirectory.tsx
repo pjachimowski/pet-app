@@ -4,25 +4,33 @@ import Title from "./Title";
 
 function PetDirectory() {
   return (
-    <div className="directoryContainer bigMarginTop">
-      <div className="directoryLeftContainer">
+    <div className="directory big-margin-top" aria-label="Pets Directory">
+      <div className="directory-left__container width-lg">
         <img
-          className="directoryLeft"
+          className="image-cover"
           src={"/images/treats.jpeg"}
           alt="treats"
+          aria-label="Image of treats"
         />
       </div>
-      <div className="directoryRight">
-        <Title style={"header"} text={"Pets directory"} />
+      <div className="directory-right">
         <Title
+          className={"header"}
+          text={"Pets directory"}
+          aria-label="Pets Directory Header"
+        />
+        <Title
+          className={"description big-margin-top"}
           text={
             "See all pets available for adoption, promote them and get them a home"
           }
+          aria-label="Directory Description"
         />
         <Button
-          title="View"
-          className="directoryButton standardMarginTop"
-          onClick={() => console.log("CLICK!")}
+          title="See all"
+          className="grey-button width-lg"
+          onClick={() => alert("Pet directory is under construction")}
+          aria-label="See all pets button"
         />
       </div>
     </div>
